@@ -7,8 +7,8 @@ const openSans = Open_Sans({ weight: ['400', '600'], subsets: ['latin'] });
 export default function Home() {
   return (
     <main className={`${openSans.className} bg-white text-gray-800`}>
-      <Header />
-
+      <Header/>
+        <h1>ryhmät</h1>
     </main>
   );
 }
