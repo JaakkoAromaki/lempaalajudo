@@ -20,13 +20,16 @@
 }
 
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
 }
 
 body {
-  background-color: #fff;
+  background-color: #F8F9FA;
   color: #333;
 }
