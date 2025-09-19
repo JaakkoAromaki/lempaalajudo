@@ -15,7 +15,7 @@ export default function Header() {
   const links = [{ label: "Koti", href: "/" }, { label: "Ryhmät", href: "/ryhmat" }, { label: "Kalenteri", href: "/kalenteri" }, { label: "Ohjeita", href: "/ohjeita" }, { label: "Uutiset", href: "/uutiset" }];
 
   return (
-    <header className="sticky top-0 bg-[#F8F9FA] border-b border-gray-200 h-20 z-10">
+    <header className="sticky top-0 bg-[#F8F9FA] border-b border-gray-200 h-20 z-100">
       <div className="flex items-center justify-between h-full px-6 drop-shadow-lg">
         <nav className="hidden md:flex flex-1 justify-center gap-8">{links.map(link => <Link key={link.href} className={`${fredoka.className} text-xl lg:text-3xl`} href={link.href}>{link.label}</Link>)}</nav>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 rounded focus:outline-none">{mobileOpen ? <X size={28} /> : <Menu size={28} />}</button>
