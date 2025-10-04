@@ -1,11 +1,11 @@
-'use client';
+"use client";
 import React, { useEffect, useState } from "react";
-import { Fredoka, Open_Sans } from 'next/font/google';
-import { Kausi, kaudet as defaultKaudet } from "@/data/kalenteri"; 
+import { Fredoka, Open_Sans } from "next/font/google";
+import { Kausi, kaudet as defaultKaudet } from "@/data/kalenteri";
 import Kalenteri from "@/components/Kalenteri";
 
-const fredoka = Fredoka({ weight: ['600', '700'], subsets: ['latin'] });
-const openSans = Open_Sans({ weight: ['400', '600'], subsets: ['latin'] });
+const fredoka = Fredoka({ weight: ["600", "700"], subsets: ["latin"] });
+const openSans = Open_Sans({ weight: ["400", "600"], subsets: ["latin"] });
 
 const KalenteriPage: React.FC = () => {
   const [data, setData] = useState<Kausi[]>(defaultKaudet);
@@ -27,7 +27,9 @@ const KalenteriPage: React.FC = () => {
   useEffect(() => {
     // Valitaan nykyinen kausi
     const now = new Date();
-    const current = data.find(k => now >= new Date(k.alku) && now <= new Date(k.loppu)) ?? data[0];
+    const current =
+      data.find((k) => now >= new Date(k.alku) && now <= new Date(k.loppu)) ??
+      data[0];
     setKausi(current);
   }, [data]);
 
@@ -35,9 +37,16 @@ const KalenteriPage: React.FC = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-10 gap-4 px-10 py-20 w-full text-center">
-        <h1 className={`${fredoka.className} text-4xl md:text-3xl col-span-10 text-center pb-10`}>
-          Harjoituskalenteri {kausi.nimi}
+      <div className="grid grid-cols-10 gap-4 py-5 w-full text-center">
+        <h1
+          className={`${fredoka.className} text-4xl text-black text-center md:pt-10 col-span-10`}
+        >
+          Harjoituskalenteri
+        </h1>
+        <h1
+          className={`${fredoka.className} text-3xl pt-5 pb-5 text-[#152235] text-center col-span-10`}
+        >
+          {kausi.nimi}
         </h1>
 
         {kausi.treenit.map((treeni, idx) => (
@@ -47,7 +56,9 @@ const KalenteriPage: React.FC = () => {
             >
               {treeni.päivä}
             </h1>
-            <p className={`${openSans.className} col-span-10 text-base md:text-lg leading-relaxed pl-5`}>
+            <p
+              className={`${openSans.className} col-span-10 text-base md:text-lg leading-relaxed text-center`}
+            >
               {treeni.ajat.map((a, i) => (
                 <span key={i}>
                   <b>{a.aika}</b> {a.nimi} <br />

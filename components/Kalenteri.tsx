@@ -1,13 +1,23 @@
-'use client'
+"use client";
 
 import React, { useState, useEffect } from "react";
-import { Fredoka } from 'next/font/google';
+import { Fredoka } from "next/font/google";
 
-const fredoka = Fredoka({ weight: ['600', '700'], subsets: ['latin'] });
+const fredoka = Fredoka({ weight: ["600", "700"], subsets: ["latin"] });
 
 const kuukausienNimet = [
-  "Tammikuu", "Helmikuu", "Maaliskuu", "Huhtikuu", "Toukokuu", "Kesäkuu",
-  "Heinäkuu", "Elokuu", "Syyskuu", "Lokakuu", "Marraskuu", "Joulukuu"
+  "Tammikuu",
+  "Helmikuu",
+  "Maaliskuu",
+  "Huhtikuu",
+  "Toukokuu",
+  "Kesäkuu",
+  "Heinäkuu",
+  "Elokuu",
+  "Syyskuu",
+  "Lokakuu",
+  "Marraskuu",
+  "Joulukuu",
 ];
 
 const viikonPaivat = ["Su", "Ma", "Ti", "Ke", "To", "Pe", "La"];
@@ -44,9 +54,9 @@ const Kalenteri: React.FC = () => {
   };
 
   const edellinenKuukausi = () => {
-    setNykyKuukausi(prev => {
+    setNykyKuukausi((prev) => {
       if (prev === 0) {
-        setNykyVuosi(v => v - 1);
+        setNykyVuosi((v) => v - 1);
         return 11;
       }
       return prev - 1;
@@ -54,9 +64,9 @@ const Kalenteri: React.FC = () => {
   };
 
   const seuraavaKuukausi = () => {
-    setNykyKuukausi(prev => {
+    setNykyKuukausi((prev) => {
       if (prev === 11) {
-        setNykyVuosi(v => v + 1);
+        setNykyVuosi((v) => v + 1);
         return 0;
       }
       return prev + 1;
@@ -71,7 +81,9 @@ const Kalenteri: React.FC = () => {
   const onTreenipäivä = (päivä: number | null): boolean => {
     if (päivä === null) return false;
     const date = new Date(nykyVuosi, nykyKuukausi, päivä);
-    const viikonPaivaLyhyt = date.toLocaleDateString("fi-FI", { weekday: "short" });
+    const viikonPaivaLyhyt = date.toLocaleDateString("fi-FI", {
+      weekday: "short",
+    });
     return treenipäivät.includes(viikonPaivaLyhyt);
   };
 
@@ -82,16 +94,20 @@ const Kalenteri: React.FC = () => {
       <div className="flex items-center justify-center pt-8">
         <div className="lg:w-7/12 md:w-9/12 sm:w-10/12 mx-auto p-4">
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-            <h1 className={`${fredoka.className} text-3xl p-3 text-black text-center pb-5`}>
+            <h1
+              className={`${fredoka.className} text-3xl p-3 text-black text-center pb-5`}
+            >
               Koko kuukausi
             </h1>
             <div className="flex items-center justify-between px-6 py-3 bg-white relative">
-              <h2 className={`${fredoka.className} text-2xl text-[#EE0000] absolute left-1/2 transform -translate-x-1/2 pb-3`}>
+              <h2
+                className={`${fredoka.className} text-2xl text-[#EE0000] absolute left-1/2 transform -translate-x-1/2 pb-3`}
+              >
                 {kuukausienNimet[nykyKuukausi]} {nykyVuosi}
               </h2>
             </div>
             <div className="grid grid-cols-7 gap-2 p-4">
-              {viikonPaivat.map(päivä => (
+              {viikonPaivat.map((päivä) => (
                 <div key={päivä} className="weekday text-center font-semibold">
                   {päivä}
                 </div>
@@ -125,7 +141,10 @@ const Kalenteri: React.FC = () => {
             </div>
             {valittuPäivä && (
               <div className="fixed inset-0 flex items-center justify-center z-50">
-                <div className="absolute inset-0 bg-black opacity-50" onClick={suljeModal}></div>
+                <div
+                  className="absolute inset-0 bg-black opacity-50"
+                  onClick={suljeModal}
+                ></div>
                 <div className="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg h-50 z-50 overflow-y-auto">
                   <div className="py-4 text-left px-6">
                     <div className="flex justify-between items-center pb-3">
@@ -149,7 +168,6 @@ const Kalenteri: React.FC = () => {
                 </div>
               </div>
             )}
-
           </div>
         </div>
       </div>

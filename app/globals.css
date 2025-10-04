@@ -19,7 +19,6 @@
   }
 }
 
-
 @layer base {
   * {
     margin: 0;
@@ -30,6 +29,6 @@
 }
 
 body {
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
   color: #333;
 }

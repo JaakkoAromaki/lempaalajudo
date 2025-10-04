@@ -21,17 +21,17 @@ export const kaudet: Kausi[] = [
         päivä: "Maanantai",
         ajat: [
           { aika: "17:30-18:30", nimi: "Lasten peruskurssi" },
-          { aika: "18:30-20:00", nimi: "Juniorit & Kuntojudo" }
-        ]
+          { aika: "18:30-20:00", nimi: "Juniorit & Kuntojudo" },
+        ],
       },
       {
         päivä: "Tiistai",
         ajat: [
           { aika: "17:45-19:15", nimi: "Lempitekniikka yhteistreeni" },
-          { aika: "19:15-20:30", nimi: "FitJudo" }
-        ]
-      }
-    ]
+          { aika: "19:15-20:30", nimi: "FitJudo" },
+        ],
+      },
+    ],
   },
   {
     nimi: "Syyskausi 2025",
@@ -42,9 +42,9 @@ export const kaudet: Kausi[] = [
         päivä: "Torstai",
         ajat: [
           { aika: "17:30-18:30", nimi: "Lasten peruskurssi" },
-          { aika: "18:30-20:00", nimi: "Juniorit & Kuntojudo" }
-        ]
-      }
-    ]
-  }
+          { aika: "18:30-20:00", nimi: "Juniorit & Kuntojudo" },
+        ],
+      },
+    ],
+  },
 ];

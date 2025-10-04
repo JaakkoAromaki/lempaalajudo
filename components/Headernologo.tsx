@@ -1,26 +1,46 @@
 "use client";
 
-import { Fredoka, Open_Sans } from "next/font/google";
+import { Fredoka } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
 
 const fredoka = Fredoka({ weight: ["600", "700"], subsets: ["latin"] });
-const openSans = Open_Sans({ weight: ["400", "600"], subsets: ["latin"] });
 
 export default function Header() {
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const links = [{ label: "Koti", href: "/" }, { label: "Ryhmät", href: "/ryhmat" }, { label: "Kalenteri", href: "/kalenteri" }, { label: "Ohjeita", href: "/ohjeita" }, { label: "Uutiset", href: "/uutiset" }];
+  const links = [
+    { label: "Koti", href: "/" },
+    { label: "Ryhmät", href: "/ryhmat" },
+    { label: "Kalenteri", href: "/kalenteri" },
+    { label: "Ohjeita", href: "/ohjeita" },
+    { label: "Yhteistiedot", href: "/yhteistiedot" },
+  ];
 
   return (
-    <header className="sticky top-0 bg-[#F8F9FA] border-b border-gray-200 h-20 z-10">
-      <div className="flex items-center justify-between h-full px-6 drop-shadow-lg">
-        <nav className="hidden md:flex flex-1 justify-center gap-8">{links.map(link => <Link key={link.href} className={`${fredoka.className} text-xl lg:text-3xl`} href={link.href}>{link.label}</Link>)}</nav>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 rounded focus:outline-none">{mobileOpen ? <X size={28} /> : <Menu size={28} />}</button>
+    <header className="sticky top-0 bg-[#FFF0] h-20 z-110">
+      <div className="relative flex items-center justify-end h-full px-6 drop-shadow-xs md:mt-5">
+        <div className="flex justify-between items-center invisible md:visible absolute inset-0 mx-auto bg-[#ffffffce] h-20 w-20 md:w-200 rounded-4xl -z-10">
+          <nav className="hidden md:flex flex-1 justify-center gap-8">
+            {links.map((link) => (
+              <Link key={link.href}  className={`${fredoka.className} text-xl lg:text-3xl`} href={link.href}>{link.label}</Link>
+            ))}
+          </nav>
+        </div>
+        <div id="header" className={`flex justify-end visible md:invisible items-center rounded-4xl bg-[#ffffffcb] w-13 h-13 px-3 transition-all duration-300 ease-out overflow-hidden ${mobileOpen ? "h-150 w-75 bg-white" : "h-13 w-13 bg-[#ffffffcb]"}`}>
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="relative w-6 h-5 flex flex-col justify-between items-center md:hidden focus:outline-none">
+            <span className={`block h-0.5 w-full bg-black rounded transition-transform duration-300 ease-in-out ${mobileOpen ? "rotate-45 translate-y-2.25" : ""}`}></span>
+            <span className={`block h-0.5 w-full bg-black rounded transition-opacity duration-300 ease-in-out ${mobileOpen ? "opacity-0" : "opacity-100"}`}></span>
+            <span className={`block h-0.5 w-full bg-black rounded transition-transform duration-300 ease-in-out ${mobileOpen ? "-rotate-45 -translate-y-2.25" : ""}`}></span>
+          </button>
+        </div>
       </div>
-      {mobileOpen && <div className="md:hidden bg-[#F8F9FA] border-t border-gray-200 flex flex-col items-center">{links.map(link => <Link key={link.href} onClick={() => setMobileOpen(false)} className={`${fredoka.className} block text-xl py-2 px-4 w-full text-center border-b border-gray-300`} href={link.href}>{link.label}</Link>)}</div>}
+      <div className={`md:hidden flex flex-col items-center transition-all duration-300 ease-out transform origin-top ${mobileOpen ? "opacity-100 scale-y-100 mt-4" : "opacity-0 scale-y-0 h-0 overflow-hidden"}`}>
+        {links.map((link) => (
+          <Link key={link.href} onClick={() => setMobileOpen(false)}  className={`${fredoka.className} block text-xl py-2 px-4 w-full text-center text-black hover:text-gray-900`} href={link.href}>{link.label}</Link>
+        ))}
+      </div>
     </header>
   );
 }

@@ -1,9 +1,9 @@
-import { Fredoka, Open_Sans } from 'next/font/google';
-import Header from '@/components/Headernologo';
-import Login from '@/components/Login';
+import { Fredoka, Open_Sans } from "next/font/google";
+import Header from "@/components/Headernologo";
+import Login from "@/components/Login";
 
-const fredoka = Fredoka({ weight: ['600', '700'], subsets: ['latin'] });
-const openSans = Open_Sans({ weight: ['400', '600'], subsets: ['latin'] });
+const fredoka = Fredoka({ weight: ["600", "700"], subsets: ["latin"] });
+const openSans = Open_Sans({ weight: ["400", "600"], subsets: ["latin"] });
 
 export default function Home() {
   return (
